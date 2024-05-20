@@ -13,7 +13,8 @@ public class RegExpMatchingService {
     //  Регулярные выражения, которыми оперирует метод isUrl() для распознования того, является ли строка уролом.
     private final String[] URL_REG_EXP = {
             "^https?://[^\\s]+"  /* http://<любые символы кроме пробелов> и https://<любые символы кроме проблов> */ ,
-            "^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,6}.*"  /* доменное имя типа service.alfa.bank.int и дальше опционально - путь, порт и т.д. */
+            "^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,3}(/.*)?"  /* доменное имя типа service.sense.bank.int или service.sense.bank.int/account... */,
+            "^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,3}:[0-9]+(/.*)?"  /* доменное имя типа service.sense.bank.int:8080 или service.sense.bank.int:8080/account... */
     };
     //  Единажды преобразованный массив в список, чтобы много раз не делать подобное преобразование в методе isUrl()
     private List<String> urlRegExpList = Arrays.asList(URL_REG_EXP);
